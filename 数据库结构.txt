@@ -1,0 +1,52 @@
+CREATE TABLE ask_cate ( 
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name CHAR(30) NOT NULL,
+url CHAR(255)  NOT NULL,
+host CHAR(40) NOT NULL,
+status TINYINT DEFAULT 3,
+created_at DATETIME NOT NULL,
+updated_at DATETIME NOT NULL
+) engine=InnoDB default charset=utf8;
+
+CREATE TABLE ask_cate_list ( 
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+name CHAR(30) NOT NULL,
+ask_cate_id INT NOT NULL,
+url CHAR(255)  NOT NULL,
+host CHAR(40) NOT NULL,
+status TINYINT DEFAULT 3,
+created_at DATETIME NOT NULL,
+updated_at DATETIME NOT NULL
+) engine=InnoDB default charset=utf8;
+
+CREATE TABLE ask_cate_que ( 
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ask_cate_list_id INT NOT NULL,
+url CHAR(255)  NOT NULL,
+host CHAR(40) NOT NULL,
+status TINYINT DEFAULT 3,
+created_at DATETIME NOT NULL,
+updated_at DATETIME NOT NULL
+) engine=InnoDB default charset=utf8;
+
+CREATE TABLE ask_cate_ans ( 
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ask_cate_que_id INT NOT NULL,
+question CHAR(255) NOT NULL,
+host CHAR(40) NOT NULL,
+status TINYINT DEFAULT 3,
+created_at DATETIME NOT NULL,
+updated_at DATETIME NOT NULL
+) engine=InnoDB default charset=utf8;
+
+CREATE TABLE ask_cate_ans_data ( 
+id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ask_cate_ans_id INT NOT NULL,
+nick CHAR(30) NOT NULL,
+content TEXT NOT NULL,
+true_time CHAR(100),
+host CHAR(40) NOT NULL,
+status TINYINT DEFAULT 3,
+created_at DATETIME NOT NULL,
+updated_at DATETIME NOT NULL
+) engine=InnoDB default charset=utf8;
