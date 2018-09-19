@@ -1,0 +1,17 @@
+{
+    "require": {
+        "symfony/dom-crawler": "^4.1",
+        "symfony/css-selector": "^4.1",
+        "guzzlehttp/guzzle": "^6.3",
+        "symfony/var-dumper": "^4.1",
+        "nesbot/carbon": "^1.32"
+    },
+    "autoload": {
+    	"files": [
+            "helpers/helper.php"
+        ],
+        "psr-4": {
+            "Hft\\Crawler\\": "packages/hft/crawler/src/"
+        }
+	}
+}
