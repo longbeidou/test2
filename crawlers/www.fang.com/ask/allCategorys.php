@@ -22,6 +22,7 @@ try {
 	die("mysql connect failed!\n");	
 }
 
+
 try{
 	$sql = "INSERT INTO `ask_cate`('name', 'url', 'host', 'created_at', 'updated_at') VALUES ()";
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
