@@ -1,6 +1,5 @@
 <?php
 
-// var_dump(__DIR__);
 require __DIR__.'/../../../vendor/autoload.php';
 
 use Hft\Crawler\Libraries\www_fang_com\CategoryAskCrawler;
@@ -18,7 +17,7 @@ try {
 	$crawler = new CategoryAskCrawler($config);
 	$info = $crawler->getAllCategoryLinks();
 } catch (Exception $e) {
-	die('爬取信息失败！');
+	die("爬取信息失败!");
 }
 
 $dbType='mysql';//数据库类型
@@ -33,12 +32,12 @@ try {
 	//创建PDO对象
 	$pdo=new PDO($dsn,$userName,$passWord);
 } catch (Exception $e) {
-	die("mysql connect failed!\n info:".$e->getMessage());	
+	die("mysql connect failed!更多信息如下：\n ".$e->getMessage());	
 }
 
 try{
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$sql = "INSERT INTO ask_cate VALUE (null, :name, :url, :host, null, :created_at, :updated_at)";
+	$sql = "INSERT INTO ask_cate VALUE (null, :name, :url, :host, 3, :created_at, :updated_at)";
 	$list = $pdo->prepare($sql);
 	$list->bindParam(':name', $name);
 	$list->bindParam(':url', $url);
@@ -60,4 +59,4 @@ try{
     die('操作失败'.$e->getMessage());
 }
 $pdo = null;
-dd(count($info['url']));
+echo '成功增加'.(count($info['url']))."条数据\n";
